@@ -2,7 +2,8 @@ const express = require('express');
 
 const router = express.Router();
 
-import productsController from '../controller/productsController'
+import productsController from '../controller/productsController';
+
 
 router.get('/products', productsController.listUsers);
 

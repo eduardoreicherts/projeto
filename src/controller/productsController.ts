@@ -12,7 +12,7 @@ async function listUsers(req: Request, res: Response) {
                 success: true,
                 message: 'listagem de usuarios realizada com sucesso',
                 data: results
-            }) 
+            });
         }
     });
 };

@@ -2,7 +2,7 @@ const express = require('express');
 
 const router = express.Router();
 
-import cartController from '../controller/cartsController'
+import cartController from '../controller/cartsController';
 
 
 router.get('/carts', cartController.listUsers);
