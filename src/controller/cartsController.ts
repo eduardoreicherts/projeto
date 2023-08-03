@@ -3,7 +3,7 @@ import { Request, Response } from "express";
 import db from '../config/database';
 
 async function listUsers(req: Request, res: Response) {
-    db.connection.query('select * from cart', (err, results) => {
+    db.connection.query('select ce.*, p.*, c.* from clients_ecommerce ce, products p, cart c Where ce.id_client = c.id_client and p.id_product = c.id_product;', (err, results) => {
         if(err) {
             res.json({
                 success: false
