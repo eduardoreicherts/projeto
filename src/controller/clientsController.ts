@@ -57,7 +57,7 @@ async function editUser(req: Request, res: Response) {
 };
 
 async function deleteUser(req: Request, res: Response) {
-    const querySql = 'delete from clients_ecommerce where ID_CLIENT = ?;';
+    const querySql = 'delete  from clients_ecommerce where ID_CLIENT = ?;';
 
     db.connection.query(querySql, [req.params.id], (err, results) => {
         res.json({

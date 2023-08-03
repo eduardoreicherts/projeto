@@ -3,7 +3,7 @@ import { Request, Response } from "express";
 import db from '../config/database';
 
 async function listUsers(req: Request, res: Response) {
-    db.connection.query('select ce.*, p.*, c.* from clients_ecommerce ce, products p, cart c Where ce.id_client = c.id_client and p.id_product = c.id_product;;', (err, results) => {
+    db.connection.query('select * from cart', (err, results) => {
         if(err) {
             res.json({
                 success: false
@@ -19,7 +19,7 @@ async function listUsers(req: Request, res: Response) {
 };
 
 async function registUsers(req: Request, res: Response) {
-    const querySql = 'insert into cart(ID_CLIENT, ID PRODUCT) values(?,?);';
+    const querySql = 'insert into cart(ID_CLIENT, ID_PRODUCT) values(?,?);';
 
     const params = Array(
         req.body.ID_CLIENT,
@@ -39,9 +39,8 @@ async function editUser(req: Request, res: Response) {
     const querySql = 'update cart set ID_CLIENT = ?, ID_PRODUCT = ? where ID_CART = ?;';
 
     const params = [
-        req.body.DS_NAME,
-        req.body.NM_CPF,
-        req.body.FL_STATUS,
+        req.body.ID_CLIENT,
+        req.body.ID_PRODUCT,
         req.params.id
     ];
 

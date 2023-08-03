@@ -1,6 +1,6 @@
 import clientsRouter from "./routes/clientsRouter";
 import productsRouter from "./routes/productsRouter";
-import cartRouter from "./routes/cartRouter";
+import cartRouter from "./routes/cartsRouter";
 
 const express = require('express');
 

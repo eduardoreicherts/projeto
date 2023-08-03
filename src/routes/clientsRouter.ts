@@ -8,8 +8,8 @@ router.get('/clients', clientsController.listUsers);
 
 router.post('/clients', clientsController.registUsers);
 
-router.put('/clients/:id', clientsController.editUser);
+router.put('/client/:id', clientsController.editUser);
 
-router.delete('/clients/:id', clientsController.deleteUser);
+router.delete('/client/:id', clientsController.deleteUser);
 
 export default router;

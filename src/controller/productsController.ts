@@ -18,7 +18,7 @@ async function listUsers(req: Request, res: Response) {
 };
 
 async function registUsers(req: Request, res: Response) {
-    const querySql = 'insert into products(DS_NAME, DS_DESCRIPTION, NM_VALUE, DS_BRAND, DS_STATUS) values(?,?,?);';
+    const querySql = 'insert into products(DS_NAME, DS_DESCRIPTION, NM_VALUE, DS_BRAND, DS_STATUS) values(?,?,?,?,?);';
 
     const params = Array(
         req.body.DS_NAME,
@@ -60,7 +60,7 @@ async function editUser(req: Request, res: Response) {
 };
 
 async function deleteUser(req: Request, res: Response) {
-    const querySql = 'delete from products where ID_PRODUCT = ?;';
+    const querySql = 'delete from products where id_product = ?;';
 
     db.connection.query(querySql, [req.params.id], (err, results) => {
         res.json({

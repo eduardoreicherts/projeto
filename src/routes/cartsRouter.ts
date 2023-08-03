@@ -2,12 +2,12 @@ const express = require('express');
 
 const router = express.Router();
 
-import cartController from '../controller/cartController'
+import cartController from '../controller/cartsController'
 
 
-router.get('/cart', cartController.listUsers);
+router.get('/carts', cartController.listUsers);
 
-router.post('/cart', cartController.registUsers);
+router.post('/carts', cartController.registUsers);
 
 router.put('/cart/:id', cartController.editUser);
 

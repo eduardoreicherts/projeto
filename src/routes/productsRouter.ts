@@ -2,14 +2,14 @@ const express = require('express');
 
 const router = express.Router();
 
-import productsController from '../controller/productController'
+import productsController from '../controller/productsController'
 
 router.get('/products', productsController.listUsers);
 
 router.post('/products', productsController.registUsers);
 
-router.put('/products/:id', productsController.editUser);
+router.put('/product/:id', productsController.editUser);
 
-router.delete('/products/:id', productsController.deleteUser);
+router.delete('/product/:id', productsController.deleteUser);
 
 export default router;
