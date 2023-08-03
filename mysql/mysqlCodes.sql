@@ -44,4 +44,7 @@ select ce.*, p.*, c.* from clients_ecommerce ce, products p, cart c Where ce.id_
 alter table clients_ecommerce modify column nm_cpf bigint;
 
 update clients_ecommerce set nm_cpf = 12312312312 where id_client = 1;
+delete from products where id_product =  1;
 
+update cart set ID_CLIENT = 5, ID_PRODUCT = 4 where ID_CART = 4;
+delete cart where ID_CART = 4;
