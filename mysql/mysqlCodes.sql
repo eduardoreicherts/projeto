@@ -40,3 +40,8 @@ insert into products(ds_name, ds_description, nm_value, ds_brand) Values ('Suco'
 insert into cart(id_client, id_product) Values(1, 1);
 
 select ce.*, p.*, c.* from clients_ecommerce ce, products p, cart c Where ce.id_client = c.id_client and p.id_product = c.id_product;
+
+alter table clients_ecommerce modify column nm_cpf bigint;
+
+update clients_ecommerce set nm_cpf = 12312312312 where id_client = 1;
+

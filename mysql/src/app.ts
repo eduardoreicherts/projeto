@@ -1,6 +1,5 @@
 //Iportando o arquivo router
-import clientsRouter from "./routes/clientsRouter";
-import productsRouter from "./routes/productsRouter";
+import userRouter from "./routes/clientsRouter";
 
 //Importar o pacote express para criar o servidor servidor
 const express = require('express');
@@ -11,9 +10,7 @@ const app = express();
 app.use(express.json());
 
 //Para o app usar o router
-app.use('/api/', clientsRouter);
-
-app.use('/api/', productsRouter)
+app.use('/api/', userRouter);
 
 //Exportando o app para o server.ts
 export default app;
