@@ -1,11 +1,9 @@
-//Importar o request e response do express
 import { Request, Response } from "express";
 
 import db from '../config/database';
 
-//Função assíncrona do GET
 async function listUsers(req: Request, res: Response) {
-    db.connection.query('select * from clients_ecommerce;', (err, results) => {
+    db.connection.query('select ce.*, p.*, c.* from clients_ecommerce ce, products p, cart c Where ce.id_client = c.id_client and p.id_product = c.id_product;;', (err, results) => {
         if(err) {
             res.json({
                 success: false
@@ -20,14 +18,12 @@ async function listUsers(req: Request, res: Response) {
     });
 };
 
-//Função assíncrona do POST
 async function registUsers(req: Request, res: Response) {
-    const querySql = 'insert into clients_ecommerce(DS_NAME,NM_CPF,FL_STATUS) values(?,?,?);';
+    const querySql = 'insert into cart(ID_CLIENT, ID PRODUCT) values(?,?);';
 
     const params = Array(
-        req.body.DS_NAME,
-        req.body.NM_CPF,
-        req.body.FL_STATUS
+        req.body.ID_CLIENT,
+        req.body.ID_PRODUCT
     );
 
     db.connection.query(querySql, params, (err, results) => {
@@ -39,9 +35,8 @@ async function registUsers(req: Request, res: Response) {
     });
 };
 
-//Função assíncrona do PUT
 async function editUser(req: Request, res: Response) {
-    const querySql = 'update clients_ecommerce set DS_NAME = ?, NM_CPF = ?, FL_STATUS = ? where ID_CLIENT = ?;';
+    const querySql = 'update cart set ID_CLIENT = ?, ID_PRODUCT = ? where ID_CART = ?;';
 
     const params = [
         req.body.DS_NAME,
@@ -60,9 +55,8 @@ async function editUser(req: Request, res: Response) {
     });
 };
 
-//Função assíncrona do DELETE
 async function deleteUser(req: Request, res: Response) {
-    const querySql = 'delete from clients_ecommerce where ID_CLIENT = ?;';
+    const querySql = 'delete from cart where ID_CART = ?;';
 
     db.connection.query(querySql, [req.params.id], (err, results) => {
         res.json({
@@ -73,5 +67,4 @@ async function deleteUser(req: Request, res: Response) {
     });
 };
 
-//Exportando funções assíncronas das rotas
 export default {listUsers, registUsers, editUser, deleteUser};

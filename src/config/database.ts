@@ -1,4 +1,3 @@
-//Importando o mysql2
 import mysql from 'mysql2';
 
 import dotenv from 'dotenv';
